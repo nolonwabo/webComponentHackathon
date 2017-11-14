@@ -37,6 +37,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 self.filterTable.extend({rateLimit: 250});
 
                 context.props.then(function(properties) {
+                  console.log("tableID in filter-table == "+properties.tableid)
 										if (properties.tableid) {
 											self.tableId(properties.tableid);
 										}

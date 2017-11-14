@@ -1,12 +1,15 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-table/loader'],
  function(oj, ko, $, ais, ds) {
   
     function DashboardViewModel() {
       var self = this;
       // test the ds is initializes
       console.log(JSON.stringify(ds.init()));
-      // console.log(ds.getItems())
-      
+      console.log(ds.getItems())
+      self.itemData = ds.getItems();
+
+      self.contactData = ds.getContacts();
+     
       self.handleActivated = function(info) {
         // Implement if needed
       };
