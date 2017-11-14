@@ -9,7 +9,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 self.datasource = ko.observable();
 
 
-                var worker = new Worker("js/components/filter-table/search.js");
+                var worker = new Worker("js/jet-composites/filter-table/search.js");
 
                 self.dispose = function() {
                   worker.terminate();
@@ -67,7 +67,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                         };
                         self.headerArray.push(col);
                       }
-
+                      console.log("header array == "+JSON.stringify(self.headerArray))
+                      console.log("rows array == "+JSON.stringify(self.rows))
                       self.datasource(new oj.ArrayTableDataSource([], {idAttribute : "rowIndex"}));
                       self.filterBy(" "); //forces the filterTable computed to run initially, populating the table
                       self.filterBy(properties.filter);

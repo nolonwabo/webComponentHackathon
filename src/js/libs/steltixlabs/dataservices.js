@@ -8,8 +8,8 @@ define(['knockout', 'ais'], function(ko, ais) {
         return ['ds is working...']
     }
     function getItems() {
-        var items = ko.observableArray();
-        items([
+        var itemsHolder = ko.observableArray();
+        let items = [
             {
               "F4101_PRP0": " ",
               "F4101_PRP2": " ",
@@ -21110,13 +21110,20 @@ define(['knockout', 'ais'], function(ko, ais) {
               "F4101_UMS7": " ",
               "F4101_UMS8": " "
             }
-        ]);
-        let headers = [];
+        ];
         
-        $.each(items()[0], function(i,o){
-            headers.push(i)
+        let cnt = 0;
+        items.forEach(function(oneItem){
+            oneItem.rowIndex = cnt
+            cnt++
         })
-       return { rows: items, headers: headers}
+        itemsHolder(items);
+        let headers = {'F4101_ALN':'Item Type', 'F4101_SRTX':'Search Text', 'F4101_LITM':'Item Number','F4101_DSC1':'Description'};
+        
+        // $.each(itemsHolder()[0], function(i,o){
+        //     headers.push(i)
+        // })
+       return { rows: itemsHolder, headers: headers}
     }
     function getContacts(){
         return []
