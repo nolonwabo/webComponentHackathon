@@ -9,7 +9,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ojs/ojtable', 'ojs/ojarraytabledata
                 self.rows = ko.observableArray();
                 self.datasource = ko.observable();
 
-                // do the filtering in a new thread
+                // do the filtering in a new worker 2thread
                 var worker = new Worker("js/jet-composites/filter-table/search.js");
 
                 // override the displose method of the component
