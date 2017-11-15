@@ -4,7 +4,7 @@
 ## Getting Started ##
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=CPp6sBeuxQg
 " target="_blank"><img src="http://img.youtube.com/vi/CPp6sBeuxQg/0.jpg" 
-alt="IMAGE ALT TEXT HERE" width="800" height="400" border="0" /></a>
+alt="IMAGE ALT TEXT HERE" width="760" height="400" border="0" /></a>
 
 
 **Setup JET 4.0 Tooling**
