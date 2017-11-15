@@ -1,4 +1,4 @@
-define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-table/loader'],
+define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-table/loader', 'jet-composites/overview-card/loader'],
   function (oj, ko, $, ais, ds) {
 
     function DashboardViewModel() {
@@ -16,15 +16,17 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
       // data service delivers for filter-table component --- data prop requirements
       self.itemData = ds.getItems();   
       
-      // event handler - fires jquery and jquery ui event objects
+      // event handler - provides jquery and jquery ui event objects
       self.handleRowClick = function (evt, ui){
-
-        console.log("row clicked == "+evt.target.id); // this is table ID
+        console.log($(this));
+        //console.log("row clicked == "+evt.target.id); // this is table ID
         console.log("row clicked == "+JSON.stringify(ui)); // startIndex holds row
 
       };
 
-
+      // setup obeservables for overview-card
+      self.cachedNumber = ko.observable({count: 5});
+      
       // component life cycle methods
       self.handleActivated = function (info) {
         // Implement if needed
@@ -32,6 +34,8 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
       };
 
       self.handleAttached = function (info) {
+
+
         // DOM is ready
         // can use jQuery to inject our table html
         // const tableEl = $("#myTarget");
@@ -43,6 +47,14 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
         //   });
           
         // })
+
+
+        // inject custom components
+        // for(var x=0;x<15;x++){
+        //   $('#appHolder').append('<overview-card name="name" maincolor="#c1c1c1" highlight="#B3CD62" observables="{{cachedNumber}}" clicked="{{handleRowClick}}" icon="home-icon-24"></overview-card>')
+        // }
+
+
       };
 
 
