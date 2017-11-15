@@ -1,16 +1,10 @@
 # Steltix / CodeX / Oracle JET - Hack-a-thon
 
+
+## Getting Started ##
 **Setup JET 4.0 Tooling**
 ```sh
 npm -g install @oracle/ojet-cli
-```
-**Create a new JET project**
-```sh
-ojet create <project name> --template=navdrawer|navbar|basic|blank
-```
-**Build and Run**
-```sh
-cd <project name> && ojet build && ojet serve
 ```
 
 **Setup hack-a-thon project**
@@ -24,6 +18,19 @@ ojet
 ```
 
 
+## JET tools reference ##
+**Create a new JET project**
+```sh
+ojet create <project name> --template=navdrawer|navbar|basic|blank
+```
+**Create a new JET component**
+```sh
+ojet create component <component name> 
+```
+**Build and Run**
+```sh
+cd <project name> && ojet build && ojet serve
+```
 
 
 
@@ -38,9 +45,10 @@ ojet
 
 
 
+<!-- 
 
 ![alt text](http://cdn.app.compendium.com/uploads/user/e7c690e8-6ff9-102a-ac6d-e4aebca50425/f4a5b21d-66fa-4885-92bf-c4e81c06d916/Image/719c7ac35319363570c2eaed0584e9cd/oracle_jet.png "Oracle JET")
 
 ![alt text](http://www.projectcodex.co/img/codeX-logo.svg "CodeX")
 
-![alt text](http://zone.steltixlabs.com/images/steltixlabs-black.png "Steltix")
+![alt text](http://zone.steltixlabs.com/images/steltixlabs-black.png "Steltix") -->
