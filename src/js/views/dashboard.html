@@ -7,7 +7,7 @@
 
 
           <!-- BASIC HTML COMPONENT -->
-          <input type="text" placeholder="" />
+          <!-- <input type="password" placeholder="" /> -->
 
 
           <!-- WITH JQUERY INJECTION PATTERN -->
@@ -16,11 +16,12 @@
           <!-- WITH STANDARD JS TEMPLATE PATTERN -->
           <!-- <table>
             <thead>
-              <tr><td>Item No</td><td>Description</td><td>Search Type</td><td>UPC Code</td><td>Product Code</td></tr>
+              <tr><td>Item No</td><td>Short Item No</td><td>Description</td><td>Search Type</td><td>UPC Code</td><td>Product Code</td></tr>
             </thead>
             <tbody data-bind="foreach: itemsArray">
               <tr>
                 <td data-bind="text: F4101_ITM"></td>
+                <td data-bind="text: F4101_LITM"></td>
                 <td data-bind="text: F4101_DSC1"></td>
                 <td data-bind="text: F4101_ALN"></td>
                 <td data-bind="text: F4101_UPCN"></td>
@@ -30,7 +31,7 @@
           </table> -->
 
           <!-- WITH WEB COMPONENT -->
-          <!-- <filter-table tableid="items" filter="" data={{itemData}} onrowclick="{{handleRowClick}}"></filter-table> -->
+          <filter-table tableid="items" filter="" data={{itemData}} onrowclick="{{handleRowClick}}"></filter-table>
 
 
         </div>
