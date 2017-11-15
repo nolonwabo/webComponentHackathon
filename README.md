@@ -2,6 +2,11 @@
 
 
 ## Getting Started ##
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=CPp6sBeuxQg
+" target="_blank"><img src="http://img.youtube.com/vi/CPp6sBeuxQg/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="800" height="400" border="0" /></a>
+
+
 **Setup JET 4.0 Tooling**
 ```sh
 npm -g install @oracle/ojet-cli
@@ -27,6 +32,12 @@ ojet create <project name> --template=navdrawer|navbar|basic|blank
 ```sh
 ojet create component <component name> 
 ```
+
+## JET Component File Structure ##
+
+[Examples on Wiki](https://github.com/SteltixLabs/webComponentHackathon/wiki/JET-Reference)
+
+
 **Build and Run**
 ```sh
 cd <project name> && ojet build && ojet serve
