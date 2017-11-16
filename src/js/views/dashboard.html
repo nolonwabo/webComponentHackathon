@@ -19,7 +19,7 @@
 
 
 
-          
+
 
           <!-- WITH JQUERY INJECTION PATTERN -->
           <!-- <table id="myTarget"></table> -->
@@ -32,32 +32,33 @@
           <!-- WITH JS TEMPLATE PATTERN (ko) -->
           <!-- <table>
             <thead>
-              <tr><td>Item No</td><td>Short Item No</td><td>Description</td><td>Search Type</td><td>UPC Code</td><td>Product Code</td></tr>
+              <tr>
+                <td>Item No</td>
+                <td>Description</td>
+              </tr>
             </thead>
             <tbody data-bind="foreach: itemsArray">
               <tr>
-                <td data-bind="text: F4101_ITM"></td>
-                <td data-bind="text: F4101_LITM"></td>
-                <td data-bind="text: F4101_DSC1"></td>
-                <td data-bind="text: F4101_ALN"></td>
-                <td data-bind="text: F4101_UPCN"></td>
-                <td data-bind="text: F4101_RPRC"></td>
+                <td data-bind="text: LITM"></td>
+                <td data-bind="text: DSC1"></td>
+
+
               </tr>
             </tbody>
           </table> -->
 
+  <!-- WITH WEB CCA COMPONENT -->
+  <!-- <filter-table tableid="items" filter="" data={{itemData}} onrowclick="{{handleRowClick}}"></filter-table> -->
+  
 
-
-
-
-          <!-- WITH WEB CCA COMPONENT -->
-          <!-- <filter-table tableid="items" filter="" data={{itemData}} onrowclick="{{handleRowClick}}"></filter-table> -->
 
 
         </div>
 
       </div>
       <div class="oj-flex-item">
+<div style="width:500px;height:600px;overflow:scroll">
+      </div>
 
       </div>
     </div>

@@ -4,29 +4,43 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
     function DashboardViewModel() {
       var self = this;
       // check ds is initialized
-      console.log(ds.init());
-      // for JQUERY injection pattern - below in hamdleAttached method
-      
+      self.itemsArray = ko.observable([]);
+      self.itemData = ds.getItemsStatic();
+      ds.init().then(function (data) {
+        console.log(data)
+        // for JQUERY injection pattern - below in hamdleAttached method
 
-      // for KO Pattern - fetchdata into observable
-      self.itemsArray = ko.observable(ds.getItems().rows()); 
-      
 
-      // for web component pattern
-      // data service delivers for filter-table component --- data prop requirements
-      self.itemData = ds.getItems();   
-      
+        // for KO Pattern - fetchdata into observable
+        
+          
+          ds.getItemsAPI().then(function(data2){
+            console.log(JSON.stringify(data2.rows))
+            self.itemsArray(data2.rows);
+          
+          });
+
+
+        // for web component pattern
+        // data service delivers for filter-table component --- data prop requirements
+        
+
+      })
+
+
       // event handler - provides jquery and jquery ui event objects
-      self.handleRowClick = function (evt, ui){
+      self.handleRowClick = function (evt, ui) {
         console.log($(this));
         //console.log("row clicked == "+evt.target.id); // this is table ID
-        console.log("row clicked == "+JSON.stringify(ui)); // startIndex holds row
+        console.log("row clicked == " + JSON.stringify(ui)); // startIndex holds row
 
       };
 
       // setup obeservables for overview-card
-      self.cachedNumber = ko.observable({count: 5});
-      
+      self.cachedNumber = ko.observable({
+        count: 5
+      });
+
       // component life cycle methods
       self.handleActivated = function (info) {
         // Implement if needed
@@ -45,7 +59,7 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
         //   $.each(kys, function(idx,obj) {
         //     tableEl.append('<tr><td>'+obj+'</td><td>'+o[obj]+'</td></tr>')
         //   });
-          
+
         // })
 
 
