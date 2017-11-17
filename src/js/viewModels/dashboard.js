@@ -5,6 +5,10 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
       var self = this;
       // check ds is initialized
       self.itemsArray = ko.observable([]);
+      // for web component pattern
+      // data service delivers for filter-table component --- data prop requirements
+
+
       self.itemData = ds.getItemsStatic();
       ds.init().then(function (data) {
         console.log(data)
@@ -12,18 +16,15 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
 
 
         // for KO Pattern - fetchdata into observable
-        
-          
-          ds.getItemsAPI().then(function(data2){
-            console.log(JSON.stringify(data2.rows))
-            self.itemsArray(data2.rows);
-          
-          });
 
 
-        // for web component pattern
-        // data service delivers for filter-table component --- data prop requirements
-        
+        ds.getItemsAPI().then(function (data2) {
+          console.log(JSON.stringify(data2.rows))
+          self.itemsArray(data2.rows);
+
+        });
+
+
 
       })
 
