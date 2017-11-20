@@ -7,6 +7,10 @@
 alt="IMAGE ALT TEXT HERE" width="760" height="400" border="0" /></a>
 
 
+## React Example Project ##
+
+[Repo Link](https://github.com/steltix/steltix-express-react)
+
 **Setup JET 4.0 Tooling**
 ```sh
 npm -g install @oracle/ojet-cli
