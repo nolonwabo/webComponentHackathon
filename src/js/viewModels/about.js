@@ -5,12 +5,18 @@
 /*
  * Your about ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery','ojs/router'],
+define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
  function(oj, ko, $) {
+   var router = oj.Router.rootInstance;
 
-    function AboutViewModel() {
+    function AddingDetailsModel() {
       var self = this;
-      var router = oj.Router.rootInstance;
+     self.firstName = ko.observable("Bert");
+     self.lastName = ko.observable("Bertington");
+     self.email = ko.observable("sivuyisiwe@project.co")
+
+// Activates knockout.js
+
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
       $(function() {
@@ -21,8 +27,8 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/router'],
                  console.log(savedBook);
               }
 
-              ko.applyBindings(viewModel,
-                 document.getElementById('routing-container'));
+              // ko.applyBindings(viewModel)
+                //  document.getElementById('routing-container'));
            });
          })
       /**
@@ -84,6 +90,6 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/router'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-    return new AboutViewModel();
+    return new AddingDetailsModel();
   }
 );

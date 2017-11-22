@@ -18,6 +18,19 @@ define(
         index: data._id
       }
     }
+
+
+$("#add").click(function(data){
+        $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newBook ) {
+                console.log("+==============================");
+                var mappedBooks = $.map(newBook.data, function(book){
+                        return new Task(book)
+                });
+                self.books(mappedBooks)
+        });
+})
+
+
     function BookModel() {
 
       var self = this;
@@ -51,20 +64,6 @@ define(
     }
 
     return new BookModel();
-// ========================================================================
-    // function BookModels() {
-    //   var self = this;
-    //   self.newBooks = ko.observableArray([]);
-    //
-    //   $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
-    //     console.log("+==============================");
-    //     var mappedBooks = $.map(newShoes.data, function(shoe){
-    //             return new Task(shoe)
-    //     });
-    //     self.newBooks(mappedBooks)
-    //   });
-    //
-    // }
-    //
-    // return new BookModels();
-  });
+
+
+});
