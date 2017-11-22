@@ -10,7 +10,7 @@ define(
         var self = this;
         self.composite = context.element;
         //Example observable
-        
+        self.messageText = ko.observable("Hello world")
         context.props.then(function (propertyMap) {
             //Store a reference to the properties for any later use
             self.properties = propertyMap;
