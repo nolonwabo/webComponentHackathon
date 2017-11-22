@@ -2,6 +2,24 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
   function (oj, ko, $, ais, ds) {
 
 
+// <<<<<<< HEAD
+//   // return showAllBooksViewModel();
+//     function DashboardViewModel() {
+//       var self = this;
+//       // check ds is initialized
+//       self.itemsArray = ko.observable([]);
+//       // for web component pattern
+//       // data service delivers for filter-table component --- data prop requirements
+//
+//       self.itemData = ds.getItemsStatic();
+//       ds.init().then(function (data){
+//         console.log(data)
+//         // for JQUERY injection pattern - below in hamdleAttached method
+// })
+// }
+//
+// });
+// =======
           function Task(data) {
                   this.image = ko.observable(data.image);
             this.title = ko.observable(data.title);

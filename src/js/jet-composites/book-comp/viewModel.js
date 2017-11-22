@@ -7,20 +7,32 @@ define(
     'use strict';
 
 
+
     function Task(data) {
-            this.image = ko.observable(data.image);
-      this.title = ko.observable(data.title);
-      this.author = ko.observable(data.author);
-      this.description = ko.observable(data.description);
-      this.available_Books = ko.observable(data.available_Books);
+      return {
+        image : ko.observable(data.image),
+        title :  ko.observable(data.title),
+        author : ko.observable(data.author),
+        description : ko.observable(data.description),
+        available_Books : ko.observable(data.available_Books),
+      }
     }
     function BookModel() {
       var self = this;
       self.books = ko.observableArray([]);
 
-      $.postJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
-        // console.log(allData);
-        var mappedTasks = $.map(allData, function(item) {
+      $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
+              console.log("+==============================");
+              var mappedBooks = $.map(newShoes.data, function(shoe){
+                      return new Task(shoe)
+              });
+              self.books(mappedBooks)
+      });
+
+      $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
+              console.log("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
+
+        var mappedTasks = $.map(allData.data, function(item) {
           return new Task(item)
         });
         self.books(mappedTasks);
@@ -30,105 +42,20 @@ define(
     }
 
     return new BookModel();
-
-function addNewBooks(){
-        var self = this;
-        self.addedBooks = ko.observableArray([]);
-
-        $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(shoesAdded){
-                // console.log("-----------", shoesAdded);
-                var mappedShoes = $.map(shoesAdded, function(shoe){
-                        return new Task( shoe)
-                });
-                self.addedBooks(mappedShoes);
-        });
-}
-
-  });
-
-
-
-
-  // function Guest(data){
-  //     this.id = ko.observable(data.id);
-  //     this.name = ko.observable(data.name);
-  //     this.email = ko.observable(data.email);
-  //     this.guests = ko.observable(data.guests);
-  //     this.code = ko.observable(data.code);
-  // }
-  //
-  // function guestListViewModel(){
-  //     //Data
-  //     var self = this;
-  //     self.guests = ko.observableArray([]);
-  //     self.guestsNumber = 0;
-  //
-  //     $.getJSON('/php/guests_json.php', function(json) {
-  //         var mappedGuests = $.map(json, function(item) { return new Guest(item) });
-  //         self.guests(mappedGuests);
-  //         self.guestsNumber = (self.guests().length);
-  //         $('.dlt_btn').button();
-  //
-  //     });
-  //
-  //     self.removeGuest = function(guest) {
-  //         self.guests.destroy(guest);
-  //     };
-  //
-  //     self.save = function() {
-  //         var data = 'json=' + ko.toJSON({guests: self.guests });
-  //         $.ajax("/php/save_guests.php", {
-  //             data: data,
-  //             type: "post",
-  //             success: function(result) {$('#server').html(result)}
-  //         })
-  //     }
-  //
-  //     self.totalGuests = ko.computed(function() {
-  //         var total = 0;
-  //         ko.utils.arrayForEach(self.guests(), function(guest) {
-  //             var value = guest.id;
-  //             console.log(value);
-  //             if (!isNaN(value)) {
-  //                 total += value;
-  //             }
-  //         });
-  //         return total;
-  //     });
-  //
-  // }
-  //
-  // ko.applyBindings(new guestListViewModel);
-  //
-  //
-
-
-    // function ExampleComponentModel(context) {
-    //     var self = this;
-    //     self.composite = context.element;
-    //     //Example observable
+// ========================================================================
+    // function BookModels() {
+    //   var self = this;
+    //   self.newBooks = ko.observableArray([]);
     //
-    //     context.props.then(function (propertyMap) {
-    //         //Store a reference to the properties for any later use
-    //         self.properties = propertyMap;
-    //
-    //         //Parse your component properties here
-    //
+    //   $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
+    //     console.log("+==============================");
+    //     var mappedBooks = $.map(newShoes.data, function(shoe){
+    //             return new Task(shoe)
     //     });
-    // };
+    //     self.newBooks(mappedBooks)
+    //   });
     //
-    // //Lifecycle methods - uncomment and implement if necessary
-    // //ExampleComponentModel.prototype.activated = function(context){
-    // //};
+    // }
     //
-    // //ExampleComponentModel.prototype.attached = function(context){
-    // //};
-    //
-    // //ExampleComponentModel.prototype.bindingsApplied = function(context){
-    // //};
-    //
-    // //ExampleComponentModel.prototype.detached = function(context){
-    // //};
-    //
-    // return ExampleComponentModel;
-// });
+    // return new BookModels();
+  });
