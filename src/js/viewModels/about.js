@@ -11,11 +11,25 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
 
     function AddingDetailsModel() {
       var self = this;
-     self.firstName = ko.observable("Bert");
-     self.lastName = ko.observable("Bertington");
-     self.email = ko.observable("sivuyisiwe@project.co")
+     self.firstName = ko.observable("");
+     self.lastName = ko.observable("");
+     self.email = ko.observable("")
+     self.address = ko.observable("")
+     self.savedBook = ko.observable("")
 
-// Activates knockout.js
+     self.borrowBook = function(){
+      var currentfstName = self.firstName();
+      var currentlstName = self.lastName();
+      var currentemail = self.email();
+      var currentaddres = self.address();
+      // $.POST("https://immense-refuge-39063.herokuapp.com/api/booklist/borrow/" + self.savedBook()
+      // , function(borrowedBook) {
+      //
+      // });
+
+     }
+      //  self.books(mappedTasks);
+    //  });
 
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
@@ -24,7 +38,8 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
               // Retrieve and set the sort order on the table
               var savedBook = router.retrieve();
               if (savedBook) {
-                 console.log(savedBook);
+
+                 self.savedBook(savedBook);
               }
 
               // ko.applyBindings(viewModel)

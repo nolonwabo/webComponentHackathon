@@ -4,12 +4,18 @@
  -->
 <div class="oj-hybrid-padding">
   <!-- <h1>About this project</h1> -->
-  <p><strong>First name:</strong> <input data-bind="text: firstName"></input>
+  <!-- <form data-bind="submit:"> -->
+  <p><strong>First name:</strong> <input data-bind="value: firstName"></input>
   </p>
-  <p><strong>Last name: </strong> <input data-bind="text: lastName"></input>
+  <p><strong>Last name: </strong> <input data-bind="value: lastName"></input>
   </p>
-  <p><strong> Email:   </strong><input data-bind="text: email"></input>
+  <p><strong> Email:   </strong><input data-bind="value: email"></input>
   </p>
+  <p><strong> Address:   </strong><textarea rows="4" cols="50" data-bind="value: address"></textarea>
+  </p>
+
+  <button data-bind="click: borrowBook">Borrow</button>
+<!-- </form> -->
   <div>
     <!-- <p>This dashboard is the product of the 2018 Steltix / CodeX hack-a-thon.</p> -->
   </div>
