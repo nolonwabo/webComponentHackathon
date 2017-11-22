@@ -34,13 +34,7 @@ define(
 
       self.books = ko.observableArray([]);
 
-      $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
-              console.log("+==============================");
-              var mappedBooks = $.map(newShoes.data, function(shoe){
-                      return new Task(shoe)
-              });
-              self.books(mappedBooks)
-      });
+
 
       $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
               console.log("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");

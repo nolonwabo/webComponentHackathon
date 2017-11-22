@@ -9,34 +9,53 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
  function(oj, ko, $) {
    var router = oj.Router.rootInstance;
 
-    function AddingDetailsModel() {
+    function AddingBookModel() {
       var self = this;
-     self.firstName = ko.observable();
-     self.lastName = ko.observable();
-     self.email = ko.observable()
-     self.address = ko.observable()
-     self.savedBook = ko.observable()
 
-     self.borrowBook = function(){
-      var currentfstName = self.firstName();
-      var currentlstName = self.lastName();
-      var currentemail = self.email();
-      var currentaddres = self.address();
-  console.log("------------------");
-      $.ajax({
-   url:"https://immense-refuge-39063.herokuapp.com/api/booklist/borrow/" + self.savedBook() ,
-   type: 'POST',
-   dataType: 'json',
-   success: function(bookTaken) {
+     self.title = ko.observable("The Raven");
+     self.author = ko.observable("T.V Jenkins");
+     self.description = ko.observable("This book is about...");
+     self.available_Books = ko.observable("1");
+
+     self.addingBook=function () {
+
+      //  self.Title();
+      //  self.Author();
+      //  self.Description();
+      //  self.available_Books();
+
+       //AddingBookModel.push({Title:self.title(),Author:self.author(),Description:self.description(),available_Books:self.available_books})
+
+        var book = {
+            title:self.title(),
+            author:self.author(),
+            description:self.description(),
+            available_Books:self.available_books
+          };
+
+       $.ajax({
+         url:"https://immense-refuge-39063.herokuapp.com/api/booklist",
+         type:"POST",
+         dataType:"json",
+         data : book,
+         success:function (addedBook) {
+           console.log(addedBook);
+         }
+       });
+     }
 
 
-     "you have borrowed your book successfully"
-   }
 
- })
-}
-      //  self.books(mappedTasks);
-    //  });
+
+
+
+
+
+
+
+
+
+// Activates knockout.js
 
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
@@ -45,8 +64,7 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
               // Retrieve and set the sort order on the table
               var savedBook = router.retrieve();
               if (savedBook) {
-
-                 self.savedBook(savedBook);
+                 console.log(savedBook);
               }
 
               // ko.applyBindings(viewModel)
@@ -112,20 +130,6 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-
-    return new AddingDetailsModel();
-
-    var ClickCounterViewModel = function() {
-      this.numberOfClicks = ko.observable(0);
-
-      this.registerClick = function() {
-        this.numberOfClicks(this.numberOfClicks() + 1);
-      };
-
-      this.hasClickedTooManyTimes = ko.computed(function() {
-        return this.numberOfClicks() >= 1;
-      }, this);
-
-      return new ClickCounterViewModel();
-    };
-  })
+    return new AddingBookModel();
+  }
+);
