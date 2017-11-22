@@ -9,26 +9,32 @@ define(
 
 
     function Task(data) {
-            this.image = ko.observable(data.image);
-      this.title = ko.observable(data.title);
-      this.author = ko.observable(data.author);
-      this.description = ko.observable(data.description);
-      this.available_Books = ko.observable(data.available_Books);
+      return {
+        image : ko.observable(data.image),
+        title :  ko.observable(data.title),
+        author : ko.observable(data.author),
+        description : ko.observable(data.description),
+        available_Books : ko.observable(data.available_Books),
+      }
     }
 
     //return new DashboardViewModel();
     function BookModel() {
       var self = this;
+      self.books = ko.observableArray([]);
 
       $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
-        console.log(allData);
-        var mappedTasks = $.map(allData, function(item) {
+        //console.log("-----");
+        //console.log(allData);
+        var mappedTasks = $.map(allData.data, function(item) {
+          //console.log("***");
+          //console.log(item);
+
           return new Task(item)
         });
         self.books(mappedTasks);
       });
 
-      self.books = ko.observableArray([]);
 
     }
 
