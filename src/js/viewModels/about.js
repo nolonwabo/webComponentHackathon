@@ -11,23 +11,30 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
 
     function AddingDetailsModel() {
       var self = this;
-     self.firstName = ko.observable("");
-     self.lastName = ko.observable("");
-     self.email = ko.observable("")
-     self.address = ko.observable("")
-     self.savedBook = ko.observable("")
+     self.firstName = ko.observable();
+     self.lastName = ko.observable();
+     self.email = ko.observable()
+     self.address = ko.observable()
+     self.savedBook = ko.observable()
 
      self.borrowBook = function(){
       var currentfstName = self.firstName();
       var currentlstName = self.lastName();
       var currentemail = self.email();
       var currentaddres = self.address();
-      // $.POST("https://immense-refuge-39063.herokuapp.com/api/booklist/borrow/" + self.savedBook()
-      // , function(borrowedBook) {
-      //
-      // });
+  console.log("------------------");
+      $.ajax({
+   url:"https://immense-refuge-39063.herokuapp.com/api/booklist/borrow/" + self.savedBook() ,
+   type: 'POST',
+   dataType: 'json',
+   success: function(bookTaken) {
 
-     }
+
+     "you have borrowed your book successfully"
+   }
+
+ })
+}
       //  self.books(mappedTasks);
     //  });
 
@@ -105,6 +112,20 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
+
     return new AddingDetailsModel();
-  }
-);
+
+    var ClickCounterViewModel = function() {
+      this.numberOfClicks = ko.observable(0);
+
+      this.registerClick = function() {
+        this.numberOfClicks(this.numberOfClicks() + 1);
+      };
+
+      this.hasClickedTooManyTimes = ko.computed(function() {
+        return this.numberOfClicks() >= 1;
+      }, this);
+
+      return new ClickCounterViewModel();
+    };
+  })

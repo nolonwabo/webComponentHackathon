@@ -6,11 +6,13 @@
 <!-- <p data-bind="text:messageText"></p> -->
 <div>
   <ul data-bind="foreach:books">
-    <li ><a data-bind="click:$parent.clickHandler, attr:{id:index}"><img width="50px" height="50px" data-bind="attr:{src: image()}"/></a></li>
+    <li ><a data-bind="click:$parent.clickHandler, attr:{id:index}"><img width="200px" height="200px" data-bind="attr:{src: image()}"/></a></li>
     <li><strong>Title :</strong>  <span id="bootTitle" data-bind="text:title()"></span></li>
     <li><strong>Author :</strong> <span id="bookAuth" data-bind="text:author"></span></li>
     <li><strong>Description :</strong>  <span id="bookDescrpt" data-bind="text:description"></span></li>
-    <li><strong>Availible Books :</strong><span id="AvailibleBooks" data-bind="text:available_Books"></span></li>
+    <li><strong>Available Books :</strong><span id="AvailibleBooks" data-bind="text:available_Books"></span></li>
     <br></br>
-</ul>
+
+
+        </ul>
 </div>
