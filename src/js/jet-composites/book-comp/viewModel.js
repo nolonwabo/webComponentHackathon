@@ -3,7 +3,7 @@
   The Universal Permissive License (UPL), Version 1.0
 */
 define(
-    ['ojs/ojcore', 'knockout', 'jquery'], function (oj, ko, $) {
+    ['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'], function (oj, ko, $) {
     'use strict';
 
 
@@ -15,12 +15,21 @@ define(
         author : ko.observable(data.author),
         description : ko.observable(data.description),
         available_Books : ko.observable(data.available_Books),
+        index: data._id
       }
     }
 
     //return new DashboardViewModel();
     function BookModel() {
+
       var self = this;
+      var router = oj.Router.rootInstance;
+      self.clickHandler = function(evt,ui){
+        console.log(evt.index);
+        router.store(evt.index);
+        router.go('about');
+      }
+
       self.books = ko.observableArray([]);
 
       $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {

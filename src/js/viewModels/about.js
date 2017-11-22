@@ -5,14 +5,26 @@
 /*
  * Your about ViewModel code goes here
  */
-define(['ojs/ojcore', 'knockout', 'jquery'],
+define(['ojs/ojcore', 'knockout', 'jquery','ojs/router'],
  function(oj, ko, $) {
-  
+
     function AboutViewModel() {
       var self = this;
+      var router = oj.Router.rootInstance;
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
+      $(function() {
+           oj.Router.sync().then(function() {
+              // Retrieve and set the sort order on the table
+              var savedBook = router.retrieve();
+              if (savedBook) {
+                 console.log(savedBook);
+              }
 
+              ko.applyBindings(viewModel,
+                 document.getElementById('routing-container'));
+           });
+         })
       /**
        * Optional ViewModel method invoked when this ViewModel is about to be
        * used for the View transition.  The application can put data fetch logic
@@ -43,7 +55,7 @@ define(['ojs/ojcore', 'knockout', 'jquery'],
 
 
       /**
-       * Optional ViewModel method invoked after the bindings are applied on this View. 
+       * Optional ViewModel method invoked after the bindings are applied on this View.
        * If the current View is retrieved from cache, the bindings will not be re-applied
        * and this callback will not be invoked.
        * @param {Object} info - An object with the following key-value pairs:
