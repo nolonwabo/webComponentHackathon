@@ -18,8 +18,6 @@ define(
         index: data._id
       }
     }
-
-    //return new DashboardViewModel();
     function BookModel() {
 
       var self = this;
@@ -32,13 +30,18 @@ define(
 
       self.books = ko.observableArray([]);
 
-      $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
-        //console.log("-----");
-        //console.log(allData);
-        var mappedTasks = $.map(allData.data, function(item) {
-          //console.log("***");
-          //console.log(item);
+      $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
+              console.log("+==============================");
+              var mappedBooks = $.map(newShoes.data, function(shoe){
+                      return new Task(shoe)
+              });
+              self.books(mappedBooks)
+      });
 
+      $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
+              console.log("ppppppppppppppppppppppppppppppppppppppppppppppppppppppppp");
+
+        var mappedTasks = $.map(allData.data, function(item) {
           return new Task(item)
         });
         self.books(mappedTasks);
@@ -48,39 +51,20 @@ define(
     }
 
     return new BookModel();
-
-  });
-
-
-
-
-
-    // function ExampleComponentModel(context) {
-    //     var self = this;
-    //     self.composite = context.element;
-    //     //Example observable
+// ========================================================================
+    // function BookModels() {
+    //   var self = this;
+    //   self.newBooks = ko.observableArray([]);
     //
-    //     context.props.then(function (propertyMap) {
-    //         //Store a reference to the properties for any later use
-    //         self.properties = propertyMap;
-    //
-    //         //Parse your component properties here
-    //
+    //   $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newShoes ) {
+    //     console.log("+==============================");
+    //     var mappedBooks = $.map(newShoes.data, function(shoe){
+    //             return new Task(shoe)
     //     });
-    // };
+    //     self.newBooks(mappedBooks)
+    //   });
     //
-    // //Lifecycle methods - uncomment and implement if necessary
-    // //ExampleComponentModel.prototype.activated = function(context){
-    // //};
+    // }
     //
-    // //ExampleComponentModel.prototype.attached = function(context){
-    // //};
-    //
-    // //ExampleComponentModel.prototype.bindingsApplied = function(context){
-    // //};
-    //
-    // //ExampleComponentModel.prototype.detached = function(context){
-    // //};
-    //
-    // return ExampleComponentModel;
-// });
+    // return new BookModels();
+  });
