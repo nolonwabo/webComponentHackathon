@@ -47,4 +47,3 @@ define(['ojs/ojcore', 'knockout', 'jquery', 'ais', 'ds', 'jet-composites/filter-
           return new BookModel();
 
         });
->>>>>>> 00223974b41414aa3fe042c906ee463ab0ccc517
