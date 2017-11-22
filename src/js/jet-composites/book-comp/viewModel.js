@@ -18,7 +18,7 @@ define(
       var self = this;
       self.books = ko.observableArray([]);
 
-      $.getJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
+      $.postJSON("https://immense-refuge-39063.herokuapp.com/api/booklist", function(allData) {
         // console.log(allData);
         var mappedTasks = $.map(allData, function(item) {
           return new Task(item)
