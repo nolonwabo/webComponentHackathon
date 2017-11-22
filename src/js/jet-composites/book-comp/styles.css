@@ -1,0 +1,7 @@
+book-comp:not(.oj-complete){
+  visibility: hidden;
+}
+
+book-comp{
+
+}
