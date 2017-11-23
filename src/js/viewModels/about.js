@@ -11,32 +11,12 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
 
     function AddingDetailsModel() {
       var self = this;
-     self.firstName = ko.observable();
-     self.lastName = ko.observable();
-     self.email = ko.observable()
-     self.address = ko.observable()
-     self.savedBook = ko.observable()
+     self.firstName = ko.observable("Bert");
+     self.lastName = ko.observable("Bertington");
+     self.email = ko.observable("sivuyisiwe@project.co")
+     self.address = ko.observable("104 Mbambo Street ktc Nyanga")
 
-     self.borrowBook = function(){
-      var currentfstName = self.firstName();
-      var currentlstName = self.lastName();
-      var currentemail = self.email();
-      var currentaddres = self.address();
-  console.log("------------------");
-      $.ajax({
-   url:"https://immense-refuge-39063.herokuapp.com/api/booklist/borrow/" + self.savedBook() ,
-   type: 'POST',
-   dataType: 'json',
-   success: function(bookTaken) {
-
-
-     "you have borrowed your book successfully"
-   }
-
- })
-}
-      //  self.books(mappedTasks);
-    //  });
+// Activates knockout.js
 
       // Below are a subset of the ViewModel methods invoked by the ojModule binding
       // Please reference the ojModule jsDoc for additional available methods.
@@ -45,8 +25,7 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
               // Retrieve and set the sort order on the table
               var savedBook = router.retrieve();
               if (savedBook) {
-
-                 self.savedBook(savedBook);
+                 console.log(savedBook);
               }
 
               // ko.applyBindings(viewModel)
@@ -112,20 +91,24 @@ define(['ojs/ojcore', 'knockout', 'jquery','ojs/ojrouter'],
      * each time the view is displayed.  Return an instance of the ViewModel if
      * only one instance of the ViewModel is needed.
      */
-
     return new AddingDetailsModel();
 
-    var ClickCounterViewModel = function() {
-      this.numberOfClicks = ko.observable(0);
 
-      this.registerClick = function() {
+  var ClickCounterViewModel = function() {
+    this.numberOfClicks = ko.observable(0);
+
+    this.registerClick = function() {
         this.numberOfClicks(this.numberOfClicks() + 1);
-      };
-
-      this.hasClickedTooManyTimes = ko.computed(function() {
-        return this.numberOfClicks() >= 1;
-      }, this);
-
-      return new ClickCounterViewModel();
     };
-  })
+
+    this.resetClicks = function() {
+        this.numberOfClicks(0);
+    };
+
+    this.hasClickedTooManyTimes = ko.computed(function() {
+        return this.numberOfClicks() >= 1;
+    }, this);
+};
+
+ko.applyBindings(new ClickCounterViewModel());
+});

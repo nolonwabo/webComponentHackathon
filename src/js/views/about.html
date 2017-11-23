@@ -42,5 +42,14 @@
 
   <button type="submit" class="btn btn-success"data-bind="click: borrowBook">Borrow</button>
 
-  </div>
+  <div class='liveExample'>
+
+    <div>You've clicked <span data-bind='text: numberOfClicks'>&nbsp;</span> times</div>
+
+    <button data-bind='click: registerClick, disable: hasClickedTooManyTimes'>Click me</button>
+
+    </div>
+
 </div>
+
+  </div>

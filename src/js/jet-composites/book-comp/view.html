@@ -18,16 +18,17 @@
 </head>
 <div class="container">
         <div class="row">
-                <h1 class="text-center">  takeAread </h1><span></span>
+                <h1 class="text-center "> <u><b>takeAread</b></u>  </h1>
+                <br>
                 <ul class="list-group-vertical" data-bind="foreach:books">
                 <div class="col-sm-4">
                 <!-- <p data-bind="text:messageText"></p> -->
 
-                <li class="list-group-item"><strong>Title :</strong>  <span id="bootTitle" data-bind="text:title()"></span></li>
-                    <li class="list-group-item"><a data-bind="click:$parent.clickHandler, attr:{id:index}"><img width="200px" height="200px" data-bind="attr:{src: image()}"/></a></li>
+                <b><li class="list-group-item"><strong>Title :</strong>  <span id="bootTitle" data-bind="text:title()"></span></li></b>
+                <b> <li class="list-group-item"><a data-bind="click:$parent.clickHandler, attr:{id:index}"><img width="200px" height="200px" data-bind="attr:{src: image()}"/></a></li></b>
                     <li class="list-group-item"><strong>Author :</strong> <span id="bookAuth" data-bind="text:author"></span></li>
-                    <li class="list-group-item"><strong>Description :</strong>  <span id="bookDescrpt" data-bind="text:description"></span></li>
                     <li class="list-group-item"><strong>Available Books :</strong><span id="AvailibleBooks" data-bind="text:available_Books"></span></li>
+                    <li class="list-group-item"><strong>Description :</strong>  <span id="bookDescrpt" data-bind="text:description"></span></li>
                     <br></br>
 
 
