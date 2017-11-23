@@ -50,5 +50,14 @@ define(
 
     return new BookModel();
 
+    $("#add").click(function(data){
+            $.post( "https://immense-refuge-39063.herokuapp.com/api/booklist", function( newBook ) {
+                    console.log("+==============================");
+                    var mappedBooks = $.map(newBook.data, function(book){
+                            return new Task(book)
+                    });
+                    self.books(mappedBooks)
+            });
+    })
 
-});
+    });
